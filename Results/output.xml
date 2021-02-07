@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.8.6 on win32)" generated="20210202 16:25:33.003" rpa="false">
+<suite id="s1" name="testSuite1" source="C:\Users\BaraaAr\PycharmProjects\robotProject\Tests\Product1\APITests\testSuite1.robot">
+<test id="s1-t1" name="GET All Employees">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.154" level="INFO">Creating Session using : alias=GetRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.153" endtime="20210202 16:25:33.155"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${get_url}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.162" level="INFO">GET Request : url=http://127.0.0.1:5000/api/v1/resources/employees/all 
+ path_url=/api/v1/resources/employees/all 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210202 16:25:33.162" level="INFO">GET Response : url=http://127.0.0.1:5000/api/v1/resources/employees/all 
+ status=200, reason=OK 
+ headers={'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '470', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body=[{"_id": 1, "name": "Mohammad", "age": "25", "salary": "2372"}, {"_id": 2, "name": "Omar", "age": "24", "salary": "1800"}, {"_id": 3, "name": "Haitham", "age": "20", "salary": "1500"}, {"_id": 66, "name": "Fuad", "age": 33, "salary": 2322}, {"_id": 67, "name": "Fuad", "age": 33, "salary": 2322}, {"_id": 64, "name": "Fuad", "age": 33, "salary": 2322}, {"_id": 677, "name": "Fuad", "age": 33, "salary": 2322}, {"_id": 44, "name": "Arwad", "age": "22", "salary": "1500"}] 
+ </msg>
+<msg timestamp="20210202 16:25:33.163" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.155" endtime="20210202 16:25:33.163"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.164" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.163" endtime="20210202 16:25:33.164"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.164" endtime="20210202 16:25:33.164"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.165" level="INFO">${body} = [{"_id": 1, "name": "Mohammad", "age": "25", "salary": "2372"}, {"_id": 2, "name": "Omar", "age": "24", "salary": "1800"}, {"_id": 3, "name": "Haitham", "age": "20", "salary": "1500"}, {"_id": 66, "na...</msg>
+<status status="PASS" starttime="20210202 16:25:33.165" endtime="20210202 16:25:33.165"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>salary</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.165" endtime="20210202 16:25:33.165"></status>
+</kw>
+<doc>This will test GET request on fetching all employees</doc>
+<tags>
+<tag>ApiTesting</tag>
+</tags>
+<status status="PASS" starttime="20210202 16:25:33.153" endtime="20210202 16:25:33.166" critical="yes"></status>
+</test>
+<test id="s1-t2" name="GET Highest Salary Employee">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.168" level="INFO">Creating Session using : alias=GetRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.168" endtime="20210202 16:25:33.168"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${get_highest_url}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.173" level="INFO">GET Request : url=http://127.0.0.1:5000/api/v1/resources/employees/get_highest_salary_employee 
+ path_url=/api/v1/resources/employees/get_highest_salary_employee 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210202 16:25:33.173" level="INFO">GET Response : url=http://127.0.0.1:5000/api/v1/resources/employees/get_highest_salary_employee 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'Content-Length': '75', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body={
+  "_id": 1, 
+  "age": "25", 
+  "name": "Mohammad", 
+  "salary": "2372"
+}
+ 
+ </msg>
+<msg timestamp="20210202 16:25:33.173" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.169" endtime="20210202 16:25:33.173"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.174" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.173" endtime="20210202 16:25:33.174"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.174" endtime="20210202 16:25:33.174"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.175" level="INFO">${body} = {
+  "_id": 1, 
+  "age": "25", 
+  "name": "Mohammad", 
+  "salary": "2372"
+}
+</msg>
+<status status="PASS" starttime="20210202 16:25:33.175" endtime="20210202 16:25:33.175"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>2372</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.175" endtime="20210202 16:25:33.175"></status>
+</kw>
+<doc>This will test if GET Reeqeust return empolyee with highest paid salary</doc>
+<tags>
+<tag>ApiTesting</tag>
+</tags>
+<status status="PASS" starttime="20210202 16:25:33.167" endtime="20210202 16:25:33.176" critical="yes"></status>
+</test>
+<test id="s1-t3" name="ADD Employees">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>PostRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.177" level="INFO">Creating Session using : alias=PostRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.177" endtime="20210202 16:25:33.178"></status>
+</kw>
+<kw name="Post On Session" library="RequestsLibrary">
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>PostRequest</arg>
+<arg>${post_url}</arg>
+<arg>json=&amp;{post_data}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.183" level="INFO">POST Request : url=http://127.0.0.1:5000/api/v1/resources/employees/ 
+ path_url=/api/v1/resources/employees/ 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '61', 'Content-Type': 'application/json'} 
+ body=b'{"_id": "44", "name": "Arwad", "age": "21", "salary": "1000"}' 
+ </msg>
+<msg timestamp="20210202 16:25:33.183" level="INFO">POST Response : url=http://127.0.0.1:5000/api/v1/resources/employees/ 
+ status=200, reason=OK 
+ headers={'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '42', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body=Employee with this id: 44, Already Exists! 
+ </msg>
+<msg timestamp="20210202 16:25:33.183" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.178" endtime="20210202 16:25:33.183"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.184" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.183" endtime="20210202 16:25:33.184"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.184" endtime="20210202 16:25:33.184"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.185" level="INFO">${body} = Employee with this id: 44, Already Exists!</msg>
+<status status="PASS" starttime="20210202 16:25:33.184" endtime="20210202 16:25:33.185"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${body}</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.185" endtime="20210202 16:25:33.185"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.186" level="INFO">Creating Session using : alias=GetRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.186" endtime="20210202 16:25:33.186"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${get_employee}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.192" level="INFO">GET Request : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ path_url=/api/v1/resources/employees/?id=44 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210202 16:25:33.192" level="INFO">GET Response : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'Content-Length': '73', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body={
+  "_id": 44, 
+  "age": "22", 
+  "name": "Arwad", 
+  "salary": "1500"
+}
+ 
+ </msg>
+<msg timestamp="20210202 16:25:33.192" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.187" endtime="20210202 16:25:33.192"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.193" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.193" endtime="20210202 16:25:33.193"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.194" endtime="20210202 16:25:33.194"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.195" level="INFO">${body} = {
+  "_id": 44, 
+  "age": "22", 
+  "name": "Arwad", 
+  "salary": "1500"
+}
+</msg>
+<status status="PASS" starttime="20210202 16:25:33.194" endtime="20210202 16:25:33.195"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>${id}</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.195" endtime="20210202 16:25:33.195"></status>
+</kw>
+<doc>This will test the process of adding employees using POST request</doc>
+<tags>
+<tag>ApiTesting</tag>
+</tags>
+<status status="PASS" starttime="20210202 16:25:33.177" endtime="20210202 16:25:33.196" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Update Employees">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>PutRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.198" level="INFO">Creating Session using : alias=PutRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.198" endtime="20210202 16:25:33.198"></status>
+</kw>
+<kw name="Put On Session" library="RequestsLibrary">
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>PutRequest</arg>
+<arg>${put_url}</arg>
+<arg>json=&amp;{put_data}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.203" level="INFO">PUT Request : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ path_url=/api/v1/resources/employees/?id=44 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Arwad", "age": "22", "salary": "1500"}' 
+ </msg>
+<msg timestamp="20210202 16:25:33.203" level="INFO">PUT Response : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ status=200, reason=OK 
+ headers={'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '47', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body=Employee with id: 44, is Updated Successfully!
+ 
+ </msg>
+<msg timestamp="20210202 16:25:33.203" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.198" endtime="20210202 16:25:33.203"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.204" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.204" endtime="20210202 16:25:33.204"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.205" endtime="20210202 16:25:33.205"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.206" level="INFO">${body} = Employee with id: 44, is Updated Successfully!
+</msg>
+<status status="PASS" starttime="20210202 16:25:33.205" endtime="20210202 16:25:33.206"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${body}</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.206" endtime="20210202 16:25:33.206"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210202 16:25:33.207" level="INFO">Creating Session using : alias=GetRequest, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210202 16:25:33.207" endtime="20210202 16:25:33.207"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>GetRequest</arg>
+<arg>${get_employee}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.212" level="INFO">GET Request : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ path_url=/api/v1/resources/employees/?id=44 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210202 16:25:33.212" level="INFO">GET Response : url=http://127.0.0.1:5000/api/v1/resources/employees/?id=44 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'Content-Length': '73', 'Server': 'Werkzeug/1.0.1 Python/3.8.6', 'Date': 'Tue, 02 Feb 2021 14:25:33 GMT'} 
+ body={
+  "_id": 44, 
+  "age": "22", 
+  "name": "Arwad", 
+  "salary": "1500"
+}
+ 
+ </msg>
+<msg timestamp="20210202 16:25:33.212" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210202 16:25:33.208" endtime="20210202 16:25:33.212"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.213" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20210202 16:25:33.213" endtime="20210202 16:25:33.213"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.214" endtime="20210202 16:25:33.214"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.215" level="INFO">${body} = {
+  "_id": 44, 
+  "age": "22", 
+  "name": "Arwad", 
+  "salary": "1500"
+}
+</msg>
+<status status="PASS" starttime="20210202 16:25:33.215" endtime="20210202 16:25:33.216"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>${id}</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.216" endtime="20210202 16:25:33.216"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+</arguments>
+<assign>
+<var>${emp_id}</var>
+</assign>
+<msg timestamp="20210202 16:25:33.217" level="INFO">${emp_id} = application/json</msg>
+<status status="PASS" starttime="20210202 16:25:33.216" endtime="20210202 16:25:33.217"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${emp_id}</arg>
+</arguments>
+<status status="PASS" starttime="20210202 16:25:33.217" endtime="20210202 16:25:33.217"></status>
+</kw>
+<doc>This will test the process of Updating employees using PUT request</doc>
+<tags>
+<tag>ApiTesting</tag>
+</tags>
+<status status="PASS" starttime="20210202 16:25:33.197" endtime="20210202 16:25:33.218" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20210202 16:25:33.005" endtime="20210202 16:25:33.219"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0">Critical Tests</stat>
+<stat pass="4" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0">ApiTesting</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" id="s1" name="testSuite1">testSuite1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
